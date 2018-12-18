@@ -148,13 +148,13 @@ Let's have a simple Python class representing an article in a blogging system:
 .. code:: python
 
     from datetime import datetime
-    from elasticsearch_dsl import Document, Date, Integer, Keyword, Text
+    from elasticsearch_dsl import document, Date, Integer, Keyword, Text
     from elasticsearch_dsl.connections import connections
 
     # Define a default Elasticsearch client
     connections.create_connection(hosts=['localhost'])
 
-    class Article(Document):
+    class Article(document):
         title = Text(analyzer='snowball', fields={'raw': Keyword()})
         body = Text(analyzer='snowball')
         tags = Keyword()
